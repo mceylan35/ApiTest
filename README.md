@@ -1,9 +1,7 @@
 # ApiTest Projesi
 
-#Kullanılan Teknolojiler
 Java, TestNG ,LOG4j, Rest Assured vb teknolojiler kullanıldı.
 
-#ApiTest Projemize Geçelim
 RestAssuredConfiguration sınıfımızda Rest Assured kütüphanemizin ortak kodlarını sürekli tekrar etmemesi için bu sınıfı oluşturdum.
 
 Şu anlık sadece Get methoduyla ilgili işlemler yapılabiliyor ama put,post, delete gibi işlemleri yapmak için genişletebiliriz.
