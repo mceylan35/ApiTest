@@ -21,7 +21,7 @@ public class OmdbApiTest {
     }
 
     //Film adına göre apiye istek atıp eğer sonuç (200 OK) dönüyorsa filmin imdbId'sini döndürür
-    public String getMovieById(String movieName){
+    public String getMovieById(String movieName,String filmName){
 
         String filmId="";
         RequestSpecification requestSpecification=new RestAssuredConfiguration().getRequestSpecification();
@@ -29,11 +29,11 @@ public class OmdbApiTest {
                 .getResponse(requestSpecification,String.format("%s?s=%s&apiKey=%s", EndPoint.GET_FILM, movieName, EndPoint.API_KEY), HttpStatus.SC_OK);
         Movie movies=response.as(Movie.class, ObjectMapperType.GSON);
 
-        String test="Harry Potter and the Sorcerer's Stone";
+        
         for (Search item:movies.getSearch())
         {
 
-            if (test.equals(item.getTitle()))
+            if (filmName.equals(item.getTitle()))
             {
                 filmId=item.getImdbID();
                 testLogger.info(item.getTitle(),"filmi başarıyla bulundu.");
@@ -53,7 +53,7 @@ public class OmdbApiTest {
         requestSpecification.queryParam("type","movie");
         requestSpecification.queryParam("plot","full");
         Response response=new RestAssuredConfiguration()
-                .getResponse(requestSpecification,String.format("%s?i=%s&apiKey=%s", EndPoint.GET_FILM, getMovieById("Harry Potter"),EndPoint.API_KEY), HttpStatus.SC_OK);
+                .getResponse(requestSpecification,String.format("%s?i=%s&apiKey=%s", EndPoint.GET_FILM, getMovieById("Harry Potter","Harry Potter and the Sorcerer's Stone"),EndPoint.API_KEY), HttpStatus.SC_OK);
         MovieDetail movieDetail= response.as(MovieDetail.class, ObjectMapperType.GSON);
 
         Assert.assertEquals("Harry Potter and the Sorcerer's Stone",movieDetail.getTitle(),"Filmin Başlığı");
