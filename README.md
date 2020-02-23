@@ -1,5 +1,6 @@
-# ApiTest Projesinde Kullanılan Teknolojiler
+# ApiTest Projesi
 
+#Kullanılan Teknolojiler
 Java, TestNG ,LOG4j, Rest Assured vb teknolojiler kullanıldı.
 
 #ApiTest Projemize Geçelim
