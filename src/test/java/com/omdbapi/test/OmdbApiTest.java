@@ -36,6 +36,7 @@ public class OmdbApiTest {
             if (filmName.equals(item.getTitle()))
             {
                 filmId=item.getImdbID();
+                Assert.assertEquals("tt0241527",item.getImdbID(),"ImdbID");
                 testLogger.info(item.getTitle(),"filmi başarıyla bulundu.");
 
             }
